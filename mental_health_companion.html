@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindEase — Your Mental Health Companion</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-leaf">🌿</div>
+    MindEase
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#chat">Chat Now</a></li>
+    <li><a href="#chat" class="nav-cta">Start Free</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">
+      🤖 AI-Powered · Sentiment Aware · Always Here
+    </div>
+    <h1>Your <em>safe space</em> to talk, breathe &amp; heal.</h1>
+    <p>MindEase is an empathetic AI companion for students. Share how you feel — our Python-powered sentiment engine understands your mood and responds with care, motivation, and calming exercises.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">Talk to MindEase ✦</button>
+      <button class="btn-outline" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See how it works</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="mood-card">
+      <div class="mood-header">How are you feeling today?</div>
+      <div class="mood-emojis">
+        <button class="mood-emoji-btn" onclick="selectHeroMood(this,'😔','sad')">😔</button>
+        <button class="mood-emoji-btn" onclick="selectHeroMood(this,'😟','anxious')">😟</button>
+        <button class="mood-emoji-btn active" onclick="selectHeroMood(this,'😐','neutral')">😐</button>
+        <button class="mood-emoji-btn" onclick="selectHeroMood(this,'🙂','good')">🙂</button>
+        <button class="mood-emoji-btn" onclick="selectHeroMood(this,'😊','happy')">😊</button>
+      </div>
+      <div id="hero-response" class="chat-bubble">
+        Hi there 🌿 I'm MindEase, your personal wellness companion. How's your day going so far?
+      </div>
+      <div class="chat-bubble user-bubble">
+        I'm feeling a bit stressed about exams...
+      </div>
+      <div class="chat-bubble">
+        <div class="typing-dots"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <h2 class="section-title">Everything you need to feel better</h2>
+  <p class="section-sub">Built for students, designed with compassion and smart AI.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#e8f0eb;">🧠</div>
+      <h3>Mood Detection</h3>
+      <p>Real-time sentiment analysis detects whether you're stressed, anxious, happy, or sad from your words.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#f5ede4;">💬</div>
+      <h3>Empathetic Replies</h3>
+      <p>Claude AI crafts warm, non-judgmental responses tailored to your emotional state.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#eaf3e0;">🌬️</div>
+      <h3>Breathing Exercises</h3>
+      <p>Guided 4-7-8 breathing and box breathing techniques to calm anxiety instantly.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#faf0e6;">✨</div>
+      <h3>Daily Affirmations</h3>
+      <p>Positive, personalized affirmations to motivate you through tough study sessions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PYTHON SECTION -->
+<section class="python-section" id="how">
+  <h2 class="section-title" style="text-align:left;">Python Sentiment Engine</h2>
+  <p style="color:var(--text-muted);font-size:16px;margin-bottom:2rem;line-height:1.7;">
+    At the heart of MindEase is a simple Python-based sentiment analyzer. It scans your message for emotional keywords and assigns a mood score — then passes that context to the AI for a truly empathetic reply.
+  </p>
+  <div class="code-block">
+    <div class="code-tag">Python 3 · Basic Level</div>
+    <pre><span class="cm"># MindEase Sentiment Analyzer — Basic Python Implementation</span>
+
+<span class="kw">def</span> <span class="fn">analyze_sentiment</span>(text):
+    <span class="st">"""Detects mood from user message using keyword scoring."""</span>
+
+    <span class="cm"># Keyword dictionaries with mood weights</span>
+    mood_keywords = {
+        <span class="st">"stressed"</span>:  [<span class="st">"stress"</span>, <span class="st">"overwhelmed"</span>, <span class="st">"pressure"</span>, <span class="st">"exam"</span>, <span class="st">"deadline"</span>],
+        <span class="st">"anxious"</span>:   [<span class="st">"anxious"</span>, <span class="st">"worried"</span>, <span class="st">"nervous"</span>, <span class="st">"panic"</span>, <span class="st">"scared"</span>],
+        <span class="st">"sad"</span>:        [<span class="st">"sad"</span>, <span class="st">"lonely"</span>, <span class="st">"cry"</span>, <span class="st">"hopeless"</span>, <span class="st">"depressed"</span>],
+        <span class="st">"happy"</span>:      [<span class="st">"happy"</span>, <span class="st">"good"</span>, <span class="st">"great"</span>, <span class="st">"excited"</span>, <span class="st">"amazing"</span>],
+        <span class="st">"neutral"</span>:    [<span class="st">"okay"</span>, <span class="st">"fine"</span>, <span class="st">"alright"</span>, <span class="st">"normal"</span>]
+    }
+
+    text_lower = text.<span class="nb">lower</span>()          <span class="cm"># Step 1: lowercase</span>
+    scores = {mood: <span class="nb">0</span> <span class="kw">for</span> mood <span class="kw">in</span> mood_keywords}  <span class="cm"># Step 2: init scores</span>
+
+    <span class="cm"># Step 3: Count keyword matches</span>
+    <span class="kw">for</span> mood, keywords <span class="kw">in</span> mood_keywords.<span class="nb">items</span>():
+        <span class="kw">for</span> word <span class="kw">in</span> keywords:
+            <span class="kw">if</span> word <span class="kw">in</span> text_lower:
+                scores[mood] += <span class="nb">1</span>
+
+    <span class="cm"># Step 4: Return mood with highest score</span>
+    detected_mood = <span class="nb">max</span>(scores, key=<span class="kw">lambda</span> m: scores[m])
+    confidence = scores[detected_mood] / (<span class="nb">len</span>(text_lower.<span class="nb">split</span>()) + <span class="nb">1</span>)
+    
+    <span class="kw">return</span> {
+        <span class="st">"mood"</span>: detected_mood,
+        <span class="st">"score"</span>: <span class="nb">round</span>(confidence, <span class="nb">2</span>),
+        <span class="st">"all_scores"</span>: scores
+    }
+
+<span class="cm"># Example usage</span>
+result = analyze_sentiment(<span class="st">"I'm really stressed about my exam deadline"</span>)
+<span class="nb">print</span>(result)
+<span class="cm"># → {'mood': 'stressed', 'score': 0.33, 'all_scores': {...}}</span></pre>
+  </div>
+  <p style="color:var(--text-muted);font-size:13px;margin-top:1rem;font-style:italic;">
+    💡 This logic runs live in the chatbot below. Your message is scored, and the AI uses the detected mood to personalize its response.
+  </p>
+</section>
+
+<!-- CHAT SECTION -->
+<section class="chatbot-section" id="chat">
+  <h2 class="section-title">Talk to MindEase</h2>
+  <p class="section-sub" style="margin-bottom:2.5rem;">Share anything on your mind. I'm here to listen — always.</p>
+
+  <div class="chat-container">
+    <div class="chat-top">
+      <div class="bot-avatar">🤖</div>
+      <div class="bot-info">
+        <h3 id="agentNameDisplay">MindEase Wellness Agent™</h3>
+        <p>AI Empathetic Wellness Companion</p>
+      </div>
+      <div class="online-dot"></div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg bot">
+        <div class="msg-bubble">
+          Hello! 🌿 I'm MindEase — your safe space to talk.<br><br>
+          Whether you're feeling stressed about studies, anxious, lonely, or just want to chat — I'm here. What's on your mind today?
+        </div>
+        <div class="msg-time">Just now</div>
+      </div>
+    </div>
+
+    <div class="quick-replies" id="quickReplies">
+      <div class="chip" onclick="sendQuick('I feel stressed about exams')">😰 Exam stress</div>
+      <div class="chip" onclick="sendQuick('I feel lonely and isolated')">😔 Feeling lonely</div>
+      <div class="chip" onclick="sendQuick('I am anxious and cannot sleep')">😟 Anxiety</div>
+      <div class="chip" onclick="sendQuick('I need motivation today')">✨ Need motivation</div>
+      <div class="chip" onclick="sendQuick('Give me a breathing exercise')">🌬️ Breathing exercise</div>
+    </div>
+
+    <div class="sentiment-bar">
+      <span class="sentiment-label">Mood detected:</span>
+      <div class="bar-track"><div class="bar-fill" id="moodBar"></div></div>
+      <span class="sentiment-emoji" id="moodEmoji">😐</span>
+      <span style="font-size:12px;color:var(--text-muted);min-width:60px;" id="moodLabel">Neutral</span>
+    </div>
+
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chatInput" placeholder="Tell me how you're feeling..." rows="1"
+        onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="send-btn" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="tips-section">
+  <h2 class="section-title">Quick Wellness Tips</h2>
+  <p class="section-sub">Click any card to get personalized advice from MindEase.</p>
+  <div class="tips-grid">
+    <div class="tip-card" onclick="sendTip('box breathing technique')">
+      <div class="tip-emoji">🌬️</div>
+      <h4>Box Breathing</h4>
+      <p>4-count inhale, hold, exhale, hold. Resets your nervous system.</p>
+    </div>
+    <div class="tip-card" onclick="sendTip('grounding 5-4-3-2-1 technique for anxiety')">
+      <div class="tip-emoji">🌱</div>
+      <h4>5-4-3-2-1 Grounding</h4>
+      <p>Name 5 things you see, 4 you hear, 3 you touch...</p>
+    </div>
+    <div class="tip-card" onclick="sendTip('study break schedule Pomodoro for students')">
+      <div class="tip-emoji">🍅</div>
+      <h4>Pomodoro Study</h4>
+      <p>25 minutes focus + 5 minute break. Study smarter, not harder.</p>
+    </div>
+    <div class="tip-card" onclick="sendTip('journaling tips for stress relief students')">
+      <div class="tip-emoji">📓</div>
+      <h4>Journaling</h4>
+      <p>Write 3 things you're grateful for daily to shift mindset.</p>
+    </div>
+    <div class="tip-card" onclick="sendTip('progressive muscle relaxation technique')">
+      <div class="tip-emoji">💆</div>
+      <h4>Body Scan</h4>
+      <p>Progressive muscle relaxation from head to toe.</p>
+    </div>
+    <div class="tip-card" onclick="sendTip('positive affirmations for student confidence')">
+      <div class="tip-emoji">⭐</div>
+      <h4>Affirmations</h4>
+      <p>Daily affirmations rewire your brain for positivity.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>🌿 MindEase — Built with care for student wellbeing</p>
+  <p style="margin-top:8px;">Powered by <span>Claude AI</span> · Python Sentiment Analysis · Always free, always kind</p>
+  <p style="margin-top:12px;font-size:11px;opacity:0.5;">This is a support tool, not a replacement for professional mental health care. If you're in crisis, please contact a counselor or helpline.</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
